@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My CV</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    padding:40px;
+    display:flex;
+    justify-content:center;
+}
+
+.cv-container{
+    width:1000px;
+    background:white;
+    display:grid;
+    grid-template-columns:300px 1fr;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+/* LEFT SIDE */
+
+.left{
+    background:#0f172a;
+    color:white;
+    padding:30px;
+}
+
+.profile{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.profile img{
+    width:140px;
+    height:140px;
+    border-radius:50%;
+    border:5px solid #3b82f6;
+    object-fit:cover;
+    margin-bottom:15px;
+}
+
+.profile h2{
+    font-size:28px;
+}
+
+.profile p{
+    color:#94a3b8;
+    margin-top:5px;
+}
+
+.section{
+    margin-top:30px;
+}
+
+.section h3{
+    margin-bottom:15px;
+    color:#3b82f6;
+    border-bottom:2px solid #334155;
+    padding-bottom:8px;
+}
+
+.section p{
+    margin-bottom:10px;
+    color:#cbd5e1;
+    line-height:1.7;
+}
+
+.skills span{
+    display:inline-block;
+    background:#1e293b;
+    padding:8px 14px;
+    border-radius:30px;
+    margin:5px;
+    font-size:14px;
+}
+
+/* RIGHT SIDE */
+
+.right{
+    padding:40px;
+}
+
+.title{
+    font-size:32px;
+    margin-bottom:10px;
+    color:#0f172a;
+}
+
+.subtitle{
+    color:#64748b;
+    margin-bottom:30px;
+}
+
+.right-section{
+    margin-bottom:35px;
+}
+
+.right-section h2{
+    color:#3b82f6;
+    margin-bottom:15px;
+    border-bottom:2px solid #e2e8f0;
+    padding-bottom:10px;
+}
+
+.item{
+    margin-bottom:20px;
+}
+
+.item h4{
+    color:#0f172a;
+    margin-bottom:5px;
+}
+
+.item span{
+    color:#64748b;
+    font-size:14px;
+}
+
+.item p{
+    margin-top:8px;
+    color:#475569;
+    line-height:1.8;
+}
+
+.contact i{
+    color:#3b82f6;
+    margin-right:10px;
+}
+
+@media(max-width:900px){
+
+.cv-container{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="cv-container">
+
+    <!-- LEFT -->
+    <div class="left">
+
+        <div class="profile">
+            <img src="" alt="">
+            <h2>ZIAD OSAMA</h2>
+            <p>Frontend Developer</p>
+        </div>
+
+        <div class="section contact">
+            <h3>Contact</h3>
+
+            <p><i class="fa-solid fa-phone"></i> +20 100 000 0000</p>
+
+            <p><i class="fa-solid fa-envelope"></i> ziad@gmail.com</p>
+
+            <p><i class="fa-solid fa-location-dot"></i> Cairo, Egypt</p>
+
+            <p><i class="fa-brands fa-github"></i> github.com/ziad</p>
+        </div>
+
+        <div class="section">
+            <h3>Skills</h3>
+
+            <div class="skills">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Bootstrap</span>
+                <span>Responsive Design</span>
+                <span>UI/UX</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Languages</h3>
+
+            <p>Arabic — Native</p>
+            <p>English — Good</p>
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="right">
+
+        <h1 class="title">Curriculum Vitae</h1>
+
+        <p class="subtitle">
+            Frontend Developer passionate about building modern and responsive websites.
+        </p>
+
+        <div class="right-section">
+            <h2>About Me</h2>
+
+            <p>
+                أنا مطور واجهات أمامية أحب تصميم المواقع الحديثة والمتجاوبة
+                باستخدام HTML و CSS و JavaScript وأسعى دائمًا لتطوير مهاراتي
+                والعمل على مشاريع احترافية.
+            </p>
+        </div>
+
+        <div class="right-section">
+            <h2>Experience</h2>
+
+            <div class="item">
+                <h4>Frontend Developer</h4>
+                <span>2024 - Present</span>
+
+                <p>
+                    تصميم وتطوير صفحات ويب حديثة ومتجاوبة وتحسين تجربة المستخدم.
+                </p>
+            </div>
+
+            <div class="item">
+                <h4>Freelancer</h4>
+                <span>2023 - 2024</span>
+
+                <p>
+                    تنفيذ مواقع شخصية وتجارية باستخدام HTML و CSS و JavaScript.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="right-section">
+            <h2>Education</h2>
+
+            <div class="item">
+                <h4>Computer Science</h4>
+                <span>University Name</span>
+
+                <p>
+                    دراسة أساسيات البرمجة وتطوير الويب وقواعد البيانات.
+                </p>
+            </div>
+        </div>
+
+        <div class="right-section">
+            <h2>Projects</h2>
+
+            <div class="item">
+                <h4>Portfolio Website</h4>
+
+                <p>
+                    موقع شخصي لعرض الأعمال والمشاريع باستخدام HTML و CSS.
+                </p>
+            </div>
+
+            <div class="item">
+                <h4>E-commerce Website</h4>
+
+                <p>
+                    تصميم واجهة متجر إلكتروني متجاوب وحديث.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
