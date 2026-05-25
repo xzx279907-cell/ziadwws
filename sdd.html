@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My CV</title>
+<title>ZIAD OSAMA CV</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
 
@@ -25,6 +26,7 @@ body{
 
 .cv-container{
     width:1000px;
+    max-width:100%;
     background:white;
     display:grid;
     grid-template-columns:300px 1fr;
@@ -105,6 +107,7 @@ body{
 .subtitle{
     color:#64748b;
     margin-bottom:30px;
+    line-height:1.8;
 }
 
 .right-section{
@@ -143,121 +146,234 @@ body{
     margin-right:10px;
 }
 
+a{
+    color:#60a5fa;
+    text-decoration:none;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* MOBILE */
+
 @media(max-width:900px){
 
+body{
+    padding:10px;
+}
+
 .cv-container{
+    width:100%;
     grid-template-columns:1fr;
+}
+
+.left{
+    padding:20px;
+}
+
+.right{
+    padding:20px;
+}
+
+.profile img{
+    width:110px;
+    height:110px;
+}
+
+.profile h2{
+    font-size:24px;
+}
+
+.title{
+    font-size:26px;
+}
+
+.subtitle{
+    font-size:15px;
 }
 
 }
 
 </style>
 </head>
+
 <body>
 
 <div class="cv-container">
 
-    <!-- LEFT -->
+    <!-- LEFT SIDE -->
+
     <div class="left">
 
         <div class="profile">
-            <img src="ziad.jpg" alt="Ziad Osama">
+            <img src="ziad.jpg" alt="ZIAD OSAMA">
+
             <h2>ZIAD OSAMA</h2>
+
             <p>Frontend Developer</p>
         </div>
 
+        <!-- CONTACT -->
+
         <div class="section contact">
+
             <h3>Contact</h3>
 
-            <p><i class="fa-solid fa-phone"></i> +201025529500</p>
+            <p>
+                <i class="fa-solid fa-phone"></i>
+                +201025529500
+            </p>
 
-            <p><i class="fa-solid fa-envelope"></i> ziadfrioon@gmail.com</p>
+            <p>
+                <i class="fa-solid fa-envelope"></i>
+                ziadfrioon@gmail.com
+            </p>
 
-            <p><i class="fa-solid fa-location-dot"></i> Fayoum,Cairo, Egypt</p>
+            <p>
+                <i class="fa-solid fa-location-dot"></i>
+                Fayoum, Cairo, Egypt
+            </p>
 
-            <p><i class="fa-brands fa-github"></i> github.com/ziad212x</p>
+            <p>
+                <i class="fa-brands fa-github"></i>
+
+                <a href="https://github.com/ziad212x"
+                target="_blank">
+
+                github.com/ziad212x
+
+                </a>
+            </p>
+
         </div>
 
+        <!-- SKILLS -->
+
         <div class="section">
+
             <h3>Skills</h3>
 
             <div class="skills">
+
                 <span>HTML</span>
-                <span>Flutter</span>
+
                 <span>CSS</span>
+
                 <span>JavaScript</span>
+
                 <span>Bootstrap</span>
+
+                <span>Flutter</span>
+
                 <span>Responsive Design</span>
-                <span>UI/UX</span>
+
+                <span>UI / UX</span>
+
             </div>
+
         </div>
 
+        <!-- LANGUAGES -->
+
         <div class="section">
+
             <h3>Languages</h3>
 
             <p>Arabic — Native</p>
+
             <p>English — Good</p>
+
         </div>
 
     </div>
 
-    <!-- RIGHT -->
+    <!-- RIGHT SIDE -->
+
     <div class="right">
 
         <h1 class="title">Curriculum Vitae</h1>
 
         <p class="subtitle">
-            Frontend Developer passionate about building modern and responsive websites.
+
+            Frontend Developer passionate about building
+            modern and responsive websites and mobile apps.
+
         </p>
 
+        <!-- ABOUT -->
+
         <div class="right-section">
+
             <h2>About Me</h2>
 
             <p>
-                أنا مطور واجهات أمامية أحب تصميم المواقع الحديثة والمتجاوبة
-                باستخدام HTML و CSS و JavaScript وأسعى دائمًا لتطوير مهاراتي
-                والعمل على مشاريع احترافية.
+
+                أنا مطور واجهات أمامية أحب تصميم المواقع الحديثة
+                والمتجاوبة باستخدام HTML و CSS و JavaScript وأسعى
+                دائمًا لتطوير مهاراتي والعمل على مشاريع احترافية.
+
             </p>
+
         </div>
 
+        <!-- EXPERIENCE -->
+
         <div class="right-section">
+
             <h2>Experience</h2>
 
             <div class="item">
+
                 <h4>Frontend Developer</h4>
+
                 <span>2024 - Present</span>
 
                 <p>
-                    تصميم وتطوير صفحات ويب حديثة ومتجاوبة وتحسين تجربة المستخدم.
+
+                    تصميم وتطوير صفحات ويب حديثة ومتجاوبة
+                    وتحسين تجربة المستخدم.
+
                 </p>
+
             </div>
 
             <div class="item">
+
                 <h4>Freelancer</h4>
+
                 <span>2023 - 2024</span>
 
-                <p>
-                  
+                <p> 
                 </p>
+
             </div>
 
         </div>
 
+        <!-- EDUCATION -->
+
         <div class="right-section">
+
             <h2>Education</h2>
 
             <div class="item">
+
                 <h4>Computer Science</h4>
-                <span>University Name</span>
+
+                <span>Online Learning</span>
 
                 <p>
-                    Stanford University
+
+                    Stanford University <br>
                     Frontend Masters
+
                 </p>
+
             </div>
+
         </div>
 
-        
     </div>
 
 </div>
