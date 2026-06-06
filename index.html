@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عقارات المستقبل | الصفحة الرئيسية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="future-styles.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">عقارات المستقبل</div>
+    <ul class="nav-links">
+      <li><a href="#home">الرئيسية</a></li>
+      <li><a href="#properties">العقارات</a></li>
+      <li><a href="#about">عن الشركة</a></li>
+      <li><a href="#contact">تواصل معنا</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="user-menu-wrapper" id="user-menu-wrapper" style="display:none;">
+        <button id="user-menu-toggle" class="user-avatar-btn" type="button" aria-expanded="false">
+          <span class="avatar-placeholder">U</span>
+          <span class="user-label">المستخدم</span>
+          <span class="menu-arrow">▾</span>
+        </button>
+        <div id="user-menu" class="user-menu">
+          <div class="menu-title">الحساب</div>
+          <a href="user-profile.html" id="account-settings-link">⚙️ إعدادات الحساب</a>
+          <a href="#contact">💬 الدعم</a>
+          <a href="#" id="logout-link">🚪 تسجيل خروج</a>
+        </div>
+      </div>
+      <a href="login.html" class="login-link">تسجيل دخول</a>
+      <a href="properties.html" class="cta-btn" style="text-decoration:none;">اعرض العقارات</a>
+    </div>
+  </nav>
+
+  <header class="hero-section" id="home">
+    <div class="hero-content">
+      <h1>منزلك في المستقبل يبدأ من هنا</h1>
+      <p>اكتشف أحدث العقارات الذكية، تصفح، قارن، وتواصل مباشرة مع المالكين أو الشركات.</p>
+      <a href="#properties" class="main-btn">ابدأ البحث الآن</a>
+    </div>
+    <div class="hero-img">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="عقارات حديثة" />
+    </div>
+  </header>
+
+  <section id="properties" class="properties-section">
+    <h2>عقارات مميزة</h2>
+    <p>أفضل الفرص السكنية والتجارية في السوق مع تفاصيل دقيقة وأسعار واضحة.</p>
+    <div class="properties-grid"></div>
+  </section>
+
+  <section id="about" class="about-section">
+    <h2>عن الشركة</h2>
+    <p>نحن شركة عقارات مبتكرة نستخدم أحدث التقنيات لربط العملاء بأفضل الفرص العقارية في مصر والعالم العربي.</p>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>تواصل معنا</h2>
+    <form class="contact-form">
+      <input type="text" placeholder="الاسم" required />
+      <input type="email" placeholder="البريد الإلكتروني" required />
+      <textarea placeholder="رسالتك" required></textarea>
+      <button type="submit">إرسال</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2026 عقارات المستقبل</p>
+  </footer>
+
+  <script src="future-scripts.js"></script>
+</body>
+</html>

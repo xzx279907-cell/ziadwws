@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل حساب جديد | عقارات المستقبل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="future-styles.css" />
+  <style>
+    .register-container {
+      max-width: 420px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .register-container h2 {
+      color: #0e7c7b;
+      margin-bottom: 24px;
+    }
+    .register-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .register-form input {
+      padding: 12px;
+      border: 1px solid #cce3e2;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .register-form button {
+      background: #0e7c7b;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .register-form button:hover {
+      background: #17b978;
+    }
+    .register-container .back-link {
+      display: block;
+      margin-top: 18px;
+      color: #0e7c7b;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .captcha-box {
+      background: #e0f7fa;
+      border-radius: 8px;
+      padding: 10px 0;
+      margin-bottom: 8px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <h2>تسجيل حساب جديد</h2>
+    <form class="register-form">
+      <input type="text" placeholder="رقم الهاتف" pattern="[0-9]{10,15}" required />
+      <input type="email" placeholder="البريد الإلكتروني" required />
+      <input type="password" placeholder="كلمة السر" required minlength="6" />
+      <input type="password" placeholder="تأكيد كلمة السر" required minlength="6" />
+      <div class="captcha-box" id="captcha-box"></div>
+      <input type="text" placeholder="أدخل رمز التحقق" required id="captcha-input" />
+      <button type="submit">تسجيل</button>
+    </form>
+    <a href="login.html" class="back-link">لديك حساب؟ تسجيل دخول</a>
+    <a href="future-index.html" class="back-link">العودة للصفحة الرئيسية</a>
+  </div>
+  <script>
+    // كود كابتشا بسيط
+    function generateCaptcha() {
+      const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+      let code = '';
+      for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
+      return code;
+    }
+    const captchaBox = document.getElementById('captcha-box');
+    let captchaCode = generateCaptcha();
+    captchaBox.textContent = captchaCode;
+    document.querySelector('.register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const pass = this.querySelector('input[type="password"]:nth-of-type(1)').value;
+      const pass2 = this.querySelector('input[type="password"]:nth-of-type(2)').value;
+      const captchaInput = document.getElementById('captcha-input').value.trim().toUpperCase();
+      if (pass !== pass2) {
+        alert('كلمتا السر غير متطابقتين!');
+        return;
+      }
+      if (captchaInput !== captchaCode) {
+        alert('رمز التحقق غير صحيح!');
+        captchaCode = generateCaptcha();
+        captchaBox.textContent = captchaCode;
+        return;
+      }
+      alert('تم إنشاء الحساب بنجاح!');
+      this.reset();
+      captchaCode = generateCaptcha();
+      captchaBox.textContent = captchaCode;
+    });
+  </script>
+</body>
+</html>

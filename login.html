@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل دخول | عقارات المستقبل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="future-styles.css" />
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .login-container h2 {
+      color: #0e7c7b;
+      margin-bottom: 24px;
+    }
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .login-form input {
+      padding: 12px;
+      border: 1px solid #cce3e2;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .login-form button {
+      background: #0e7c7b;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 0;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-form button:hover {
+      background: #17b978;
+    }
+    .login-container .back-link {
+      display: block;
+      margin-top: 18px;
+      color: #0e7c7b;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>تسجيل دخول</h2>
+    <form class="login-form">
+      <input type="text" name="username" placeholder="اسم المستخدم أو البريد الإلكتروني" required />
+      <input type="password" placeholder="كلمة المرور" required />
+      <button type="submit">دخول</button>
+    </form>
+    <a href="register.html" class="back-link" style="margin-bottom:10px;">تسجيل حساب جديد</a>
+    <a href="future-index.html" class="back-link">العودة للصفحة الرئيسية</a>
+  </div>
+  <script>
+    document.querySelector('.login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var username = this.querySelector('input[name="username"]').value.trim();
+      if (username) {
+        localStorage.setItem('realestate_username', username);
+      }
+      // جلب صورة البروفايل من localStorage (لو موجودة)
+      var profile = {};
+      try {
+        profile = JSON.parse(localStorage.getItem('realestate_profile') || '{}');
+      } catch (e) {
+        profile = {};
+      }
+
+      profile.name = profile.name || username;
+      profile.username = username;
+      profile.email = profile.email || '';
+      profile.gender = profile.gender || '';
+      profile.phone = profile.phone || '';
+      profile.date = profile.date || new Date().toISOString().slice(0, 10);
+      profile.avatar = profile.avatar || localStorage.getItem('realestate_avatar') || '';
+
+      localStorage.setItem('realestate_profile', JSON.stringify(profile));
+      if (profile.avatar) localStorage.setItem('realestate_avatar', profile.avatar);
+
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

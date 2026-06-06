@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عقارات المستقبل | عرض العقارات</title>
+  <link rel="stylesheet" href="future-styles.css">
+  <link rel="stylesheet" href="properties-styles.css">
+</head>
+<body>
+    <div class="top-bar">
+      عقارات المستقبل | أفضل العروض العقارية في مصر
+      <div id="user-info" style="display:none; float:left; direction:ltr; position:relative;">
+        <span id="user-name" style="font-weight:700; margin-left:8px;"></span>
+        <span style="vertical-align:middle; position:relative; top:-4px;">
+          <svg id="user-icon" width="28" height="28" viewBox="0 0 24 24" fill="#0e7c7b" style="background:#e0f7fa; border-radius:50%; padding:3px; border:1.5px solid #17b978;">
+            <circle cx="12" cy="8.5" r="4.5"/>
+            <path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6"/>
+          </svg>
+        </span>
+        <span id="user-menu-toggle" style="cursor:pointer; margin-right:6px; font-size:18px; vertical-align:middle; position:relative; top:-2px;">▼</span>
+        <div id="user-menu" style="display:none; position:absolute; left:0; top:38px; background:#fff; border-radius:10px; box-shadow:0 4px 18px #0e7c7b22; min-width:150px; z-index:1000; text-align:right;">
+          <a href="user-profile.html" style="display:block; padding:10px 18px; color:#0e7c7b; text-decoration:none; border-bottom:1px solid #e0f7fa;">صفحتي الشخصية</a>
+          <a href="#" id="account-settings-link" style="display:block; padding:10px 18px; color:#0e7c7b; text-decoration:none; border-bottom:1px solid #e0f7fa;">إعدادات الحساب</a>
+          <a href="#" id="logout-link" style="display:block; padding:10px 18px; color:#d32f2f; text-decoration:none;">تسجيل الخروج</a>
+        </div>
+      </div>
+    </div>
+    <div class="properties-header">
+      <h1>كل العقارات المتاحة</h1>
+      <p class="properties-desc">اكتشف أفضل العقارات المعروضة للبيع أو الإيجار في مصر. تصفح البطاقات وشاهد التفاصيل والصور.</p>
+    </div>
+    <div class="properties-grid" id="all-properties-grid">
+      <!-- بطاقات العقارات ستضاف ديناميكياً بواسطة future-scripts.js -->
+    </div>
+  </section>
+  <footer>
+    <p>جميع الحقوق محفوظة &copy; 2026 عقارات المستقبل</p>
+  </footer>
+  <script src="future-scripts.js"></script>
+</body>
+</html>

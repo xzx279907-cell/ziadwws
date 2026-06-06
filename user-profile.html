@@ -1,0 +1,616 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>صفحتي الشخصية | عقارات المستقبل</title>
+  <link rel="stylesheet" href="future-styles.css">
+  <link rel="stylesheet" href="cropper.min.css">
+  <style>
+    :root {
+      --brand: #0e7c7b;
+      --brand-light: #e8f9f6;
+      --text-dark: #143835;
+      --text-muted: #5f7770;
+      --bg: #edf7f6;
+      --surface: #ffffff;
+      --border: rgba(14,124,123,0.14);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--text-dark);
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .profile-page {
+      max-width: 1180px;
+      margin: 24px auto 40px;
+      padding: 0 16px;
+    }
+    .header-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 26px 24px;
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: 0 18px 45px rgba(14,124,123,0.09);
+    }
+    .header-title {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--brand);
+    }
+    .header-subtitle {
+      margin: 8px 0 0;
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .button,
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .button-primary {
+      background: linear-gradient(90deg, var(--brand), #17b978);
+      color: #fff;
+      border-color: transparent;
+    }
+    .button-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(14,124,123,0.18);
+    }
+    .button-secondary {
+      background: var(--surface);
+      color: var(--brand);
+      border-color: var(--border);
+    }
+    .button-secondary:hover {
+      background: #f3fcfb;
+      transform: translateY(-1px);
+    }
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .profile-card,
+    .form-card,
+    .info-card,
+    .quick-card {
+      background: var(--surface);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 18px 45px rgba(14,124,123,0.06);
+    }
+    .cover-card {
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 180px;
+      position: relative;
+      background: linear-gradient(135deg, var(--brand), #17b978);
+    }
+    .cover-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      opacity: 0.18;
+    }
+    .cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(14,124,123,0.24);
+    }
+    .profile-summary {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 180px;
+      padding: 24px;
+      z-index: 1;
+      color: #fff;
+    }
+    .avatar-frame {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid rgba(255,255,255,0.95);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.16);
+      background: #fff;
+    }
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-name {
+      margin: 16px 0 6px;
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+    }
+    .profile-role {
+      margin: 0;
+      font-size: 1rem;
+      opacity: 0.88;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.15);
+      font-size: 0.95rem;
+      backdrop-filter: blur(8px);
+    }
+    .avatar-action {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .stat-block {
+      background: var(--brand-light);
+      border-radius: 20px;
+      padding: 18px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--brand);
+    }
+    .stat-label {
+      margin-top: 8px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .quick-card h3,
+    .info-card h3,
+    .form-card h2 {
+      margin: 0 0 14px;
+      color: var(--brand);
+      font-size: 1.15rem;
+    }
+    .quick-card p,
+    .info-card p,
+    .form-card p {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-size: 0.98rem;
+    }
+    .form-card {
+      display: grid;
+      gap: 22px;
+    }
+    .form-card form {
+      display: grid;
+      gap: 18px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .field-group {
+      display: grid;
+      gap: 10px;
+    }
+    .field-group label {
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+    .field-group input,
+    .field-group select,
+    .field-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #d8eef0;
+      border-radius: 18px;
+      background: #f7fbfb;
+      color: var(--text-dark);
+      font-size: 0.96rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .field-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    .field-group input:focus,
+    .field-group select:focus,
+    .field-group textarea:focus {
+      border-color: #17b978;
+      box-shadow: 0 0 0 4px rgba(23,185,120,0.08);
+      background: #fff;
+    }
+    .field-group input:disabled,
+    .field-group select:disabled,
+    .field-group textarea:disabled {
+      background: #f1f6f6;
+      color: #7a8a88;
+      cursor: not-allowed;
+    }
+    .form-footer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 8px;
+    }
+    .profile-success {
+      display: none;
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 18px;
+      background: #e9f7f2;
+      border: 1px solid #c6efe6;
+      color: var(--brand);
+      font-weight: 700;
+      text-align: center;
+    }
+    .modal-window {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: rgba(0,0,0,0.48);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-card {
+      width: min(560px, 100%);
+      background: var(--surface);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 24px 50px rgba(0,0,0,0.18);
+      text-align: center;
+      position: relative;
+    }
+    .modal-card img {
+      width: 100%;
+      border-radius: 20px;
+      max-height: 420px;
+      object-fit: contain;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: none;
+      background: #f4fafa;
+      color: var(--brand);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+    .modal-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .hidden {
+      display: none !important;
+    }
+    @media (max-width: 980px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-bar {
+        padding: 22px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-page">
+    <div class="header-bar">
+      <div>
+        <h1 class="header-title">ملفك الشخصي</h1>
+        <p class="header-subtitle">هذه الصفحة مصممة لتكون أكثر احترافية وواضحة. يمكنك تعديل بياناتك مباشرة وحفظ الصورة الشخصية بسهولة.</p>
+      </div>
+      <div class="header-actions">
+        <a href="index.html" class="button button-secondary">الرئيسية</a>
+        <a href="login.html" class="button button-secondary">تسجيل خروج</a>
+      </div>
+    </div>
+    <div class="profile-grid">
+      <div>
+        <section class="profile-card">
+          <div class="cover-card">
+            <div class="cover-overlay"></div>
+            <div class="profile-summary">
+              <div class="avatar-frame">
+                <img id="avatar-img" src="https://ui-avatars.com/api/?name=اسم+المستخدم&background=e0f7fa&color=0e7c7b&size=128" alt="الصورة الشخصية">
+              </div>
+              <p class="profile-name" id="cover-name">اسم المستخدم</p>
+              <p class="profile-role">عضو مميز في عقارات المستقبل</p>
+              <span class="badge">يمكنك تعديل بياناتك الآن</span>
+            </div>
+          </div>
+          <div class="avatar-action">
+            <label for="avatar-input" class="button button-secondary">تغيير الصورة</label>
+            <button type="button" id="edit-profile-btn" class="button button-primary">تعديل الملف الشخصي</button>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-block">
+              <div class="stat-number">12</div>
+              <div class="stat-label">عقار منشور</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-number">7</div>
+              <div class="stat-label">طلبات</div>
+            </div>
+            <div class="stat-block">
+              <div class="stat-number">4</div>
+              <div class="stat-label">رسائل جديدة</div>
+            </div>
+          </div>
+        </section>
+        <section class="quick-card">
+          <h3>روابط مهمة</h3>
+          <p>انقر على أي رابط للانتقال بسرعة. يمكنك العودة للرئيسية أو طلب الدعم في أي وقت.</p>
+          <div style="display:grid;gap:12px;margin-top:18px;">
+            <a class="button button-secondary" href="index.html">العودة للرئيسية</a>
+            <a class="button button-secondary" href="#support">طلب الدعم</a>
+          </div>
+        </section>
+      </div>
+      <div>
+        <section class="form-card">
+          <div>
+            <h2>معلومات الحساب</h2>
+            <p>اضغط على زر تعديل لتحرير البيانات. بعد الانتهاء اضغط حفظ ليتم حفظ التغييرات في حسابك.</p>
+          </div>
+          <form id="profile-form" autocomplete="off">
+            <input type="file" id="avatar-input" accept="image/*" class="hidden" />
+            <div class="form-grid">
+              <div class="field-group">
+                <label for="profile-name">الاسم الكامل</label>
+                <input type="text" id="profile-name" required disabled>
+              </div>
+              <div class="field-group">
+                <label for="profile-username">اسم المستخدم</label>
+                <input type="text" id="profile-username" required disabled>
+              </div>
+              <div class="field-group">
+                <label for="profile-email">البريد الإلكتروني</label>
+                <input type="email" id="profile-email" disabled>
+              </div>
+              <div class="field-group">
+                <label for="profile-phone">رقم الهاتف</label>
+                <input type="text" id="profile-phone" disabled>
+              </div>
+              <div class="field-group">
+                <label for="profile-gender">النوع</label>
+                <select id="profile-gender" disabled>
+                  <option value="">— اختر —</option>
+                  <option value="ذكر">ذكر</option>
+                  <option value="أنثى">أنثى</option>
+                  <option value="اخرى">اخرى</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="profile-date">تاريخ التسجيل</label>
+                <input type="text" id="profile-date" disabled>
+              </div>
+            </div>
+            <div class="field-group" style="grid-column:1 / -1;">
+              <label for="profile-bio">نبذة عني</label>
+              <textarea id="profile-bio" disabled placeholder="أضف نبذة قصيرة عن نفسك..."></textarea>
+            </div>
+            <div class="form-footer">
+              <button type="button" class="button button-secondary" id="cancel-edit-btn">إلغاء</button>
+              <button type="submit" class="button button-primary" id="save-profile-btn">حفظ التغييرات</button>
+            </div>
+            <div class="profile-success" id="profile-success">تم حفظ التغييرات بنجاح.</div>
+          </form>
+        </section>
+        <section class="info-card" id="support">
+          <h3>نبذة سريعة</h3>
+          <p>الصفحة الآن منظمة بشكل احترافي وتمنحك تحكم كامل في ملفك. يمكن حفظ الصورة وقصها مباشرة من نفس الشاشة.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div id="cropper-modal" class="modal-window">
+    <div class="modal-card">
+      <button type="button" id="close-cropper-modal" class="modal-close">×</button>
+      <img id="cropper-image" src="" alt="قص الصورة">
+      <div class="modal-footer">
+        <button type="button" class="button button-primary" id="crop-image-btn">قص وحفظ الصورة</button>
+        <button type="button" class="button button-secondary" id="cancel-crop-btn">إلغاء</button>
+      </div>
+    </div>
+  </div>
+  <script src="cropper.min.js"></script>
+  <script>
+    function getProfile() {
+      const saved = localStorage.getItem('realestate_profile');
+      if (saved) return JSON.parse(saved);
+      const username = localStorage.getItem('realestate_username') || 'اسم المستخدم';
+      return {
+        name: username,
+        username: username,
+        email: username.includes('@') ? username : '',
+        gender: '',
+        phone: '',
+        date: new Date().toISOString().slice(0,10),
+        bio: '',
+        avatar: ''
+      };
+    }
+    function setProfile(profile) {
+      localStorage.setItem('realestate_profile', JSON.stringify(profile));
+      if (profile.username) localStorage.setItem('realestate_username', profile.username);
+    }
+
+    const profile = getProfile();
+    const avatarImg = document.getElementById('avatar-img');
+    const coverName = document.getElementById('cover-name');
+    const avatarInput = document.getElementById('avatar-input');
+    const editProfileBtn = document.getElementById('edit-profile-btn');
+    const saveProfileBtn = document.getElementById('save-profile-btn');
+    const cancelEditBtn = document.getElementById('cancel-edit-btn');
+    const profileSuccess = document.getElementById('profile-success');
+    const cropperModal = document.getElementById('cropper-modal');
+    const cropperImage = document.getElementById('cropper-image');
+    const cropImageBtn = document.getElementById('crop-image-btn');
+    const cancelCropBtn = document.getElementById('cancel-crop-btn');
+    let cropper = null;
+
+    function updateAvatar(src) {
+      avatarImg.src = src || `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name || 'اسم المستخدم')}&background=e0f7fa&color=0e7c7b&size=128`;
+    }
+    function updateProfileFields() {
+      document.getElementById('profile-name').value = profile.name || '';
+      document.getElementById('profile-username').value = profile.username || '';
+      document.getElementById('profile-email').value = profile.email || '';
+      document.getElementById('profile-phone').value = profile.phone || '';
+      document.getElementById('profile-gender').value = profile.gender || '';
+      document.getElementById('profile-date').value = profile.date || new Date().toISOString().slice(0,10);
+      document.getElementById('profile-bio').value = profile.bio || '';
+      coverName.textContent = profile.name || 'اسم المستخدم';
+    }
+
+    updateAvatar(profile.avatar);
+    updateProfileFields();
+    saveProfileBtn.style.display = 'none';
+    cancelEditBtn.style.display = 'none';
+
+    function setEditMode(on) {
+      const fields = ['profile-name', 'profile-username', 'profile-email', 'profile-phone', 'profile-gender', 'profile-bio'];
+      fields.forEach(id => {
+        document.getElementById(id).disabled = !on;
+      });
+      saveProfileBtn.style.display = on ? 'inline-flex' : 'none';
+      cancelEditBtn.style.display = on ? 'inline-flex' : 'none';
+      editProfileBtn.style.display = on ? 'none' : 'inline-flex';
+    }
+
+    editProfileBtn.addEventListener('click', function() {
+      setEditMode(true);
+    });
+    cancelEditBtn.addEventListener('click', function() {
+      setEditMode(false);
+      updateProfileFields();
+    });
+
+    document.getElementById('profile-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      profile.name = document.getElementById('profile-name').value.trim() || profile.name;
+      profile.username = document.getElementById('profile-username').value.trim() || profile.username;
+      profile.email = document.getElementById('profile-email').value.trim();
+      profile.phone = document.getElementById('profile-phone').value.trim();
+      profile.gender = document.getElementById('profile-gender').value;
+      profile.bio = document.getElementById('profile-bio').value.trim();
+      setProfile(profile);
+      updateAvatar(profile.avatar);
+      updateProfileFields();
+      setEditMode(false);
+      profileSuccess.textContent = 'تم حفظ التغييرات بنجاح.';
+      profileSuccess.style.display = 'block';
+      setTimeout(() => profileSuccess.style.display = 'none', 2500);
+    });
+
+    avatarInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) return alert('يرجى اختيار ملف صورة صحيح.');
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        cropperImage.src = evt.target.result;
+        cropperModal.style.display = 'flex';
+        setTimeout(() => {
+          if (cropper) cropper.destroy();
+          cropper = new Cropper(cropperImage, {
+            aspectRatio: 1,
+            viewMode: 1,
+            autoCropArea: 1,
+            background: false,
+            movable: true,
+            zoomable: true,
+            responsive: true,
+          });
+        }, 100);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function closeCropper() {
+      cropperModal.style.display = 'none';
+      if (cropper) {
+        cropper.destroy();
+        cropper = null;
+      }
+      avatarInput.value = '';
+    }
+
+    cancelCropBtn.addEventListener('click', closeCropper);
+    document.getElementById('close-cropper-modal').addEventListener('click', closeCropper);
+    cropperModal.addEventListener('click', function(e) {
+      if (e.target === cropperModal) closeCropper();
+    });
+
+    cropImageBtn.addEventListener('click', function() {
+      if (!cropper) return;
+      const canvas = cropper.getCroppedCanvas({ width: 320, height: 320, imageSmoothingQuality: 'high' });
+      const avatarData = canvas.toDataURL('image/png');
+      profile.avatar = avatarData;
+      setProfile(profile);
+      updateAvatar(avatarData);
+      closeCropper();
+      profileSuccess.textContent = 'تم حفظ الصورة بنجاح.';
+      profileSuccess.style.display = 'block';
+      setTimeout(() => profileSuccess.style.display = 'none', 2500);
+    });
+  </script>
+</body>
+</html>
